@@ -2,8 +2,9 @@ package com.bridgeLabs.dataStructure;
 
 import java.util.ArrayList;
 
-import com.bridgeLabz.hashTable.MyMapNode;
+import com.bridgeLabz.linkedList.INode;
 import com.bridgeLabz.linkedList.MyLinkedList;
+import com.bridgeLabz.linkedList.MyNode;
 
 
 public class HashFunctionSearch<K, V> {
@@ -18,6 +19,21 @@ public class HashFunctionSearch<K, V> {
 		for (int i=0;i<numBuckets;i++) {
 			this.myBucketArray.add(null);
 		}
+	}
+	
+	public static void main(String args[]) {
+
+		HashFunctionSearch<Integer, Integer> hashFunctionSearch = new HashFunctionSearch<>();
+		
+		hashFunctionSearch.add(15, 15);
+		hashFunctionSearch.add(20, 20);
+		hashFunctionSearch.add(34, 34);
+		hashFunctionSearch.add(9, 9);
+		hashFunctionSearch.add(5, 5);
+		
+		System.out.println(hashFunctionSearch.toString());
+
+		
 	}
 	
 	private int getBucketIndex(K key) {
@@ -36,7 +52,7 @@ public class HashFunctionSearch<K, V> {
 			this.myBucketArray.set(index, myLinkedList);
 		}
 		
-		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>)myLinkedList.findNode((Comparable) key);
+		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) myLinkedList.getNode(new MyNode<K>(key));
 
 		if (myMapNode == null)  {
 			myMapNode = new MyMapNode<>(key, value);
@@ -47,6 +63,12 @@ public class HashFunctionSearch<K, V> {
 		}
 		
 	}
+
+	@Override
+	public String toString() {
+		return "HashFunctionSearch [numBuckets=" + numBuckets + ", myBucketArray=" + myBucketArray + "]";
+	}
+	
 	
 	
 }
