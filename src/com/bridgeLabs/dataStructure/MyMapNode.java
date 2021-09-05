@@ -48,15 +48,11 @@ public class MyMapNode<K, V> implements INode<K> {
 		this.next = (MyMapNode<K, V>) next;
 	}
 	
+	@Override
 	public String toString() {
-		StringBuilder myStringBuilder = new StringBuilder();
-		myStringBuilder.append("MyMapNode( K =").append(key).append(" V=").append(value).append("}");
-		
-		if (next != null ) {
-			myStringBuilder.append("-->").append(next);
-		}
-		
-		return myStringBuilder.toString();
+		return "MyMapNode [key=" + key + ", value=" + value + ", next=" + next + "]";
 	}
+	
+	
 
 }
