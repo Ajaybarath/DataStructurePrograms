@@ -2,6 +2,7 @@ package com.bridgeLabs.dataStructure;
 
 import java.util.ArrayList;
 
+import com.bridgeLabz.hashTable.MyMapNode;
 import com.bridgeLabz.linkedList.MyLinkedList;
 
 
@@ -26,6 +27,26 @@ public class HashFunctionSearch<K, V> {
 	}
 	
 	
+	public void add(K key, V value) {
+		int index = this.getBucketIndex(key);
+		MyLinkedList myLinkedList = this.myBucketArray.get(index);
+		
+		if (myLinkedList == null) {
+			myLinkedList = new MyLinkedList<>();
+			this.myBucketArray.set(index, myLinkedList);
+		}
+		
+		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>)myLinkedList.findNode((Comparable) key);
+
+		if (myMapNode == null)  {
+			myMapNode = new MyMapNode<>(key, value);
+			myLinkedList.append(myMapNode);
+		}
+		else {
+			myMapNode.setValue(value);
+		}
+		
+	}
 	
 	
 }
